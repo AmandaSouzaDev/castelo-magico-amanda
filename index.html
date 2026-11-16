@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Castelo Mágico | Amanda Souza</title>
 
 <style>
@@ -27,27 +28,36 @@ html, body {
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+
     background:
-      linear-gradient(180deg, rgba(15,4,30,.08), rgba(15,4,30,.48)),
+      linear-gradient(
+        180deg,
+        rgba(15,4,30,.08),
+        rgba(15,4,30,.48)
+      ),
       url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png")
       center center / cover no-repeat;
 }
 
-/* Brilho mágico */
+/* BRILHO DO CASTELO */
+
 .castelo::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
+
     background: radial-gradient(
-      circle at center,
-      transparent 20%,
-      rgba(20, 3, 38, .38) 100%
+        circle at center,
+        transparent 20%,
+        rgba(20,3,38,.38) 100%
     );
+
     z-index: 2;
 }
 
-/* Camadas da imagem que formam os portões */
+/* PORTÕES */
+
 .portao {
     position: absolute;
     inset: 0;
@@ -59,10 +69,13 @@ html, body {
 .folha {
     width: 50%;
     height: 100%;
+
     background-image: url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png");
+
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
-    transition: transform 2.5s cubic-bezier(.75, 0, .2, 1);
+
+    transition: transform 2.5s cubic-bezier(.75,0,.2,1);
 }
 
 .esquerda {
@@ -81,85 +94,205 @@ html, body {
     transform: translateX(100%);
 }
 
-/* Texto por cima da entrada */
+/* CONTEÚDO CENTRAL */
+
 .conteudo {
     position: absolute;
     z-index: 5;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
-    width: 90%;
+
+    width: 94%;
     text-align: center;
     color: white;
-    text-shadow: 0 3px 15px #160022;
 }
 
-.coroa {
-    font-size: clamp(35px, 6vw, 65px);
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 12px #ffd76a);
+/* NOME AMANDA SOUZA */
+
+#nome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 3px;
+
+    font-size: clamp(29px, 7vw, 76px);
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    perspective: 700px;
+    white-space: normal;
 }
 
-h1 {
-    font-size: clamp(34px, 7vw, 76px);
-    color: #ffe6ff;
-    letter-spacing: 4px;
+#nome span {
+    display: inline-block;
+
+    color: #171717;
+
+    -webkit-text-stroke: 1px #c7c7c7;
+
     text-shadow:
-      0 0 10px #e5aaff,
-      0 0 25px #a83bff,
-      0 0 45px #8c28ff;
+        1px 1px 0 #eeeeee,
+        2px 2px 0 #999999,
+        3px 3px 0 #666666,
+        4px 4px 0 #292929,
+        5px 5px 7px #000000,
+        0 0 12px #ffffff;
+
+    opacity: 0;
+
+    transform-style: preserve-3d;
+
+    animation: cair 0.75s cubic-bezier(.2,.8,.3,1) forwards;
 }
+
+@keyframes cair {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(-220px)
+            rotateX(100deg)
+            rotateZ(-20deg)
+            scale(1.5);
+    }
+
+    65% {
+        opacity: 1;
+        transform:
+            translateY(15px)
+            rotateX(-15deg)
+            rotateZ(5deg)
+            scale(1.08);
+    }
+
+    85% {
+        transform:
+            translateY(-5px)
+            rotateX(5deg)
+            scale(.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotateX(0)
+            rotateZ(0)
+            scale(1);
+    }
+}
+
+/* FRASE */
 
 .frase {
-    font-size: clamp(14px, 2.5vw, 21px);
-    margin-top: 14px;
-    color: #fff0ff;
+    font-size: clamp(13px, 2.5vw, 21px);
+    margin-top: 22px;
+    color: #ffffff;
     letter-spacing: 2px;
+
+    text-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #a83bff;
 }
+
+/* BOTÃO PRETO METÁLICO */
 
 button {
     margin-top: 32px;
+
     padding: 17px 38px;
-    border: 2px solid #ffe5a0;
+
+    border: 2px solid #c0c0c0;
     border-radius: 50px;
-    background: linear-gradient(135deg, #8b36cf, #d34db8, #7a2cc2);
-    color: white;
-    font-size: clamp(15px, 2vw, 20px);
+
+    background: linear-gradient(
+        145deg,
+        #050505,
+        #454545,
+        #080808
+    );
+
+    color: #ffffff;
+
+    font-size: clamp(14px, 2vw, 20px);
     font-weight: bold;
     letter-spacing: 2px;
+
     cursor: pointer;
+
+    text-shadow: 0 0 8px #ffffff;
+
     box-shadow:
-      0 0 15px #d78cff,
-      0 0 35px rgba(194, 91, 255, .65);
+        0 5px 0 #111111,
+        0 8px 18px #000000,
+        0 0 20px #aaaaaa;
+
+    opacity: 0;
+
+    animation: aparecerBotao .8s ease 2.2s forwards;
+
     transition: .3s;
 }
 
-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 30px #ffb9ff;
+@keyframes aparecerBotao {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
+
+button:hover {
+    transform: translateY(-5px) scale(1.06);
+
+    background: linear-gradient(
+        145deg,
+        #333333,
+        #777777,
+        #111111
+    );
+
+    box-shadow:
+        0 0 20px #ffffff,
+        0 0 40px #999999;
+}
+
+/* DESAPARECIMENTO AO ENTRAR */
 
 .castelo.aberto .conteudo {
     opacity: 0;
     transition: opacity .8s ease;
 }
 
-/* Ajuste para telas pequenas */
+/* CELULAR */
+
 @media (max-width: 600px) {
-    .castelo {
-        background-position: center center;
-    }
 
     .folha {
         background-size: 100vw 100dvh;
     }
 
-    h1 {
-        letter-spacing: 2px;
+    #nome {
+        font-size: clamp(27px, 8vw, 45px);
+        letter-spacing: 1px;
+        gap: 1px;
+    }
+
+    .frase {
+        letter-spacing: 1px;
     }
 
     button {
-        padding: 15px 25px;
+        padding: 15px 23px;
+        font-size: 14px;
     }
 }
 </style>
@@ -175,9 +308,8 @@ button:hover {
     </div>
 
     <div class="conteudo">
-        <div class="coroa">👑</div>
 
-        <h1>AMANDA SOUZA</h1>
+        <h1 id="nome"></h1>
 
         <p class="frase">
             Um mundo de conhecimento, criatividade e tecnologia
@@ -186,12 +318,35 @@ button:hover {
         <button onclick="entrar()">
             ✨ ENTRAR NO MEU CASTELO ✨
         </button>
+
     </div>
 
 </div>
 
 <script>
+
+/* ANIMAÇÃO DAS LETRAS */
+
+const nome = "AMANDA SOUZA";
+
+const elementoNome = document.getElementById("nome");
+
+[...nome].forEach((letra, i) => {
+
+    const span = document.createElement("span");
+
+    span.textContent = letra === " " ? "\u00A0" : letra;
+
+    span.style.animationDelay = (i * 0.15) + "s";
+
+    elementoNome.appendChild(span);
+
+});
+
+/* ABERTURA DO CASTELO */
+
 function entrar() {
+
     const castelo = document.getElementById("castelo");
 
     if (castelo.classList.contains("aberto")) return;
@@ -201,7 +356,9 @@ function entrar() {
     setTimeout(() => {
         window.location.href = "sobre.html";
     }, 2700);
+
 }
+
 </script>
 
 </body>
