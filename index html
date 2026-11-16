@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanda Souza | Castelo Mágico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background:
+      radial-gradient(circle at 50% 40%, #65209a, #210d3b 55%, #080511);
+    color: white;
+}
+
+.castelo {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    position: relative;
+}
+
+.estrelas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(2px 2px at 15% 20%, white, transparent),
+      radial-gradient(2px 2px at 80% 15%, #ffd76a, transparent),
+      radial-gradient(3px 3px at 65% 70%, white, transparent),
+      radial-gradient(2px 2px at 25% 80%, #ffb5e8, transparent),
+      radial-gradient(2px 2px at 90% 85%, white, transparent);
+    background-size: 250px 250px;
+    animation: brilhar 4s infinite alternate;
+}
+
+@keyframes brilhar {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+.coroa {
+    font-size: 48px;
+    filter: drop-shadow(0 0 15px gold);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(38px, 8vw, 76px);
+    font-weight: 900;
+    color: #ffe6a0;
+    text-shadow: 0 0 12px #ffbd32, 0 0 35px #d68bff;
+    letter-spacing: 5px;
+}
+
+.subtitulo {
+    margin: 15px 0 28px;
+    color: #ffd9f3;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.portao {
+    width: min(390px, 85vw);
+    height: 280px;
+    display: flex;
+    border: 5px solid #f8d77a;
+    border-radius: 190px 190px 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 0 25px #ffd76a, 0 0 75px #b65cff;
+    background: #170923;
+    position: relative;
+}
+
+.porta {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #f6d77c, #9c5918, #fce7a0, #6c3510);
+    border: 3px solid #ffe9a8;
+    transition: transform 2s ease;
+    position: relative;
+}
+
+.porta::after {
+    content: "✦";
+    position: absolute;
+    top: 45%;
+    color: #fff1b0;
+    font-size: 32px;
+    text-shadow: 0 0 12px white;
+}
+
+.esquerda {
+    border-radius: 180px 0 0 0;
+}
+
+.direita {
+    border-radius: 0 180px 0 0;
+}
+
+.portao.aberto .esquerda {
+    transform: translateX(-100%);
+}
+
+.portao.aberto .direita {
+    transform: translateX(100%);
+}
+
+button {
+    margin-top: 32px;
+    padding: 16px 35px;
+    border: 2px solid #ffe7a0;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #f6c75b, #fff0b3, #d99a31);
+    color: #321044;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 22px #ffd76a;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px #fff0a8;
+}
+
+.frase {
+    margin-top: 22px;
+    color: #f7c7ed;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+@media(max-width: 500px) {
+    .portao { height: 230px; }
+    .subtitulo { letter-spacing: 1px; }
+}
+</style>
+</head>
+
+<body>
+<main class="castelo">
+    <div class="estrelas"></div>
+
+    <div class="coroa">👑</div>
+    <p class="subtitulo">UM UNIVERSO DE CRIATIVIDADE, TECNOLOGIA E MAGIA</p>
+
+    <h1>AMANDA SOUZA</h1>
+
+    <p class="subtitulo">SEJA BEM-VINDO(A) AO MEU CASTELO</p>
+
+    <div class="portao" id="portao">
+        <div class="porta esquerda"></div>
+        <div class="porta direita"></div>
+    </div>
+
+    <button onclick="entrar()">VAMOS ENTRAR NO MEU CASTELO?</button>
+
+  
+
+<script>
+function entrar() {
+    const portao = document.getElementById("portao");
+    portao.classList.add("aberto");
+
+    setTimeout(() => {
+        alert("Bem-vindo(a)! Nossa próxima sala será aberta em breve.");
+    }, 2100);
+}
+</script>
+</body>
+</html>
