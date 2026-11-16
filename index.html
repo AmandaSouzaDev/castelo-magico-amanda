@@ -27,6 +27,7 @@ html, body {
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+
     background:
       linear-gradient(180deg, rgba(15,4,30,.08), rgba(15,4,30,.48)),
       url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png")
@@ -38,11 +39,13 @@ html, body {
     position: absolute;
     inset: 0;
     pointer-events: none;
+
     background: radial-gradient(
       circle at center,
       transparent 20%,
       rgba(20,3,38,.38) 100%
     );
+
     z-index: 2;
 }
 
@@ -59,9 +62,12 @@ html, body {
 .folha {
     width: 50%;
     height: 100%;
+
     background-image: url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png");
+
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
+
     transition: transform 2.5s cubic-bezier(.75,0,.2,1);
 }
 
@@ -81,26 +87,29 @@ html, body {
     transform: translateX(100%);
 }
 
-/* CONTEÚDO */
+/* CONTEÚDO CENTRAL */
 
 .conteudo {
     position: absolute;
     z-index: 5;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
+
     width: 94%;
     text-align: center;
     color: white;
 }
 
-/* NOME MENOR, PRETO METÁLICO E DOURADO */
+/* NOME PRETO METÁLICO COM BORDAS DOURADAS */
 
 #nome {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
     gap: 3px;
 
     font-size: clamp(25px, 5vw, 58px);
@@ -114,6 +123,7 @@ html, body {
 
 #nome span {
     display: inline-block;
+
     color: #171717;
 
     -webkit-text-stroke: 1.5px #ffd700;
@@ -127,6 +137,7 @@ html, body {
         5px 5px 8px #000000;
 
     opacity: 0;
+
     transform-style: preserve-3d;
 
     animation: cair .75s cubic-bezier(.2,.8,.3,1) forwards;
@@ -178,7 +189,7 @@ html, body {
     }
 }
 
-/* FRASE ILUMINADA */
+/* FRASE BRANCA E DOURADA ILUMINADA */
 
 .frase {
     font-size: clamp(13px, 2.2vw, 20px);
@@ -204,6 +215,7 @@ html, body {
     50% {
         opacity: 1;
         filter: brightness(1.8);
+
         text-shadow:
             0 0 10px #ffffff,
             0 0 20px #fff2b0,
@@ -212,7 +224,7 @@ html, body {
     }
 }
 
-/* ENTRAR NO MEU CASTELO - TEXTO LIVRE */
+/* ENTRAR NO MEU CASTELO - ROXO LUMINOSO */
 
 button {
     display: inline-block;
@@ -222,24 +234,31 @@ button {
     border: none;
     background: transparent;
 
-    color: #171717;
+    color: #d879ff;
+
     font-size: clamp(15px, 2.2vw, 23px);
     font-weight: 900;
     letter-spacing: 3px;
 
     cursor: pointer;
 
+    -webkit-text-stroke: 0.5px #f4caff;
+
     text-shadow:
-        1px 1px 0 #ffffff,
-        2px 2px 0 #aaaaaa,
-        3px 3px 0 #555555,
-        0 0 12px #ffffff,
-        0 0 22px #cfcfcf;
+        0 0 5px #ffffff,
+        0 0 12px #e9a5ff,
+        0 0 22px #bd38ff,
+        0 0 38px #8a00ff,
+        2px 3px 3px #31004d;
 
     box-shadow: none;
 
     opacity: 0;
-    animation: aparecerBotao .8s ease 2.2s forwards;
+
+    animation:
+        aparecerBotao .8s ease 2.2s forwards,
+        luzBotao 2s ease-in-out 3s infinite;
+
     transition: .3s;
 }
 
@@ -255,16 +274,28 @@ button {
     }
 }
 
-button:hover {
-    transform: scale(1.12);
-    text-shadow:
-        1px 1px 0 #ffffff,
-        3px 3px 0 #888888,
-        0 0 20px #ffffff,
-        0 0 35px #cccccc;
+@keyframes luzBotao {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.8);
+    }
 }
 
-/* DESAPARECIMENTO AO ENTRAR */
+button:hover {
+    transform: scale(1.12);
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 25px #e9a5ff,
+        0 0 45px #bd38ff,
+        0 0 65px #8a00ff;
+}
+
+/* ANIMAÇÃO AO ENTRAR */
 
 .castelo.aberto .conteudo {
     opacity: 0;
@@ -274,8 +305,9 @@ button:hover {
 /* CELULAR */
 
 @media (max-width: 600px) {
+
     .folha {
-        background-size: 100vw 100dvh;
+        background-size: 100vw 100vh;
     }
 
     #nome {
@@ -331,17 +363,21 @@ const nome = "AMANDA SOUZA";
 const elementoNome = document.getElementById("nome");
 
 [...nome].forEach((letra, i) => {
+
     const span = document.createElement("span");
 
     span.textContent = letra === " " ? "\u00A0" : letra;
+
     span.style.animationDelay = (i * 0.15) + "s";
 
     elementoNome.appendChild(span);
+
 });
 
 /* ABERTURA DOS PORTÕES */
 
 function entrar() {
+
     const castelo = document.getElementById("castelo");
 
     if (castelo.classList.contains("aberto")) return;
@@ -351,6 +387,7 @@ function entrar() {
     setTimeout(() => {
         window.location.href = "sobre.html";
     }, 2700);
+
 }
 
 </script>
