@@ -27,7 +27,6 @@ html, body {
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
-
     background:
       linear-gradient(180deg, rgba(15,4,30,.08), rgba(15,4,30,.48)),
       url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png")
@@ -39,13 +38,11 @@ html, body {
     position: absolute;
     inset: 0;
     pointer-events: none;
-
     background: radial-gradient(
       circle at center,
       transparent 20%,
       rgba(20,3,38,.38) 100%
     );
-
     z-index: 2;
 }
 
@@ -62,12 +59,9 @@ html, body {
 .folha {
     width: 50%;
     height: 100%;
-
     background-image: url("https://raw.githubusercontent.com/AmandaSouzaDev/castelo-magico-amanda/main/5f0ee79a-7ad7-480f-a32b-cb1cac9fa5eb.png");
-
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
-
     transition: transform 2.5s cubic-bezier(.75,0,.2,1);
 }
 
@@ -94,40 +88,31 @@ html, body {
     z-index: 5;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     width: 94%;
     text-align: center;
     color: white;
 }
 
-/* NOME PRETO METÁLICO COM BORDAS DOURADAS */
+/* NOME */
 
 #nome {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
     gap: 3px;
-
     font-size: clamp(25px, 5vw, 58px);
     font-weight: 900;
     letter-spacing: 2px;
-
     perspective: 700px;
-
     animation: brilhoNome 2.5s ease-in-out 1.5s infinite;
 }
 
 #nome span {
     display: inline-block;
-
     color: #171717;
-
     -webkit-text-stroke: 1.5px #ffd700;
-
     text-shadow:
         0 0 5px #fff5c2,
         0 0 10px #ffd700,
@@ -135,74 +120,46 @@ html, body {
         1px 1px 0 #ffffff,
         3px 3px 0 #b8860b,
         5px 5px 8px #000000;
-
     opacity: 0;
-
     transform-style: preserve-3d;
-
     animation: cair .75s cubic-bezier(.2,.8,.3,1) forwards;
 }
 
 @keyframes cair {
     0% {
         opacity: 0;
-        transform:
-            translateY(-220px)
-            rotateX(100deg)
-            rotateZ(-20deg)
-            scale(1.5);
+        transform: translateY(-220px) rotateX(100deg) rotateZ(-20deg) scale(1.5);
     }
-
     65% {
         opacity: 1;
-        transform:
-            translateY(15px)
-            rotateX(-15deg)
-            rotateZ(5deg)
-            scale(1.08);
+        transform: translateY(15px) rotateX(-15deg) rotateZ(5deg) scale(1.08);
     }
-
     85% {
-        transform:
-            translateY(-5px)
-            rotateX(5deg)
-            scale(.98);
+        transform: translateY(-5px) rotateX(5deg) scale(.98);
     }
-
     100% {
         opacity: 1;
-        transform:
-            translateY(0)
-            rotateX(0)
-            rotateZ(0)
-            scale(1);
+        transform: translateY(0) rotateX(0) rotateZ(0) scale(1);
     }
 }
 
 @keyframes brilhoNome {
-    0%, 100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(1.8);
-    }
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.8); }
 }
 
-/* FRASE BRANCA E DOURADA ILUMINADA */
+/* FRASE */
 
 .frase {
     font-size: clamp(13px, 2.2vw, 20px);
     margin-top: 22px;
     color: #fff9dc;
     letter-spacing: 2px;
-
     text-shadow:
         0 0 5px #ffffff,
         0 0 12px #ffe8a3,
         0 0 25px #ffd700,
         0 0 40px #ffffff;
-
     animation: brilhoFrase 2.5s ease-in-out infinite;
 }
 
@@ -211,11 +168,9 @@ html, body {
         opacity: .85;
         filter: brightness(1);
     }
-
     50% {
         opacity: 1;
         filter: brightness(1.8);
-
         text-shadow:
             0 0 10px #ffffff,
             0 0 20px #fff2b0,
@@ -224,41 +179,31 @@ html, body {
     }
 }
 
-/* ENTRAR NO MEU CASTELO - ROXO LUMINOSO */
+/* BOTÃO */
 
 button {
     display: inline-block;
     margin-top: 32px;
     padding: 10px;
-
     border: none;
     background: transparent;
-
     color: #d879ff;
-
     font-size: clamp(15px, 2.2vw, 23px);
     font-weight: 900;
     letter-spacing: 3px;
-
     cursor: pointer;
-
     -webkit-text-stroke: 0.5px #f4caff;
-
     text-shadow:
         0 0 5px #ffffff,
         0 0 12px #e9a5ff,
         0 0 22px #bd38ff,
         0 0 38px #8a00ff,
         2px 3px 3px #31004d;
-
     box-shadow: none;
-
     opacity: 0;
-
     animation:
         aparecerBotao .8s ease 2.2s forwards,
         luzBotao 2s ease-in-out 3s infinite;
-
     transition: .3s;
 }
 
@@ -267,7 +212,6 @@ button {
         opacity: 0;
         transform: translateY(35px) scale(.7);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -275,19 +219,13 @@ button {
 }
 
 @keyframes luzBotao {
-    0%, 100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(1.8);
-    }
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.8); }
 }
 
 button:hover {
     transform: scale(1.12);
     color: #ffffff;
-
     text-shadow:
         0 0 10px #ffffff,
         0 0 25px #e9a5ff,
@@ -295,7 +233,7 @@ button:hover {
         0 0 65px #8a00ff;
 }
 
-/* ANIMAÇÃO AO ENTRAR */
+/* ABERTURA */
 
 .castelo.aberto .conteudo {
     opacity: 0;
@@ -305,7 +243,6 @@ button:hover {
 /* CELULAR */
 
 @media (max-width: 600px) {
-
     .folha {
         background-size: 100vw 100vh;
     }
@@ -340,7 +277,6 @@ button:hover {
     </div>
 
     <div class="conteudo">
-
         <h1 id="nome"></h1>
 
         <p class="frase">
@@ -350,7 +286,6 @@ button:hover {
         <button onclick="entrar()">
             ✨ ENTRAR NO MEU CASTELO ✨
         </button>
-
     </div>
 
 </div>
@@ -363,21 +298,15 @@ const nome = "AMANDA SOUZA";
 const elementoNome = document.getElementById("nome");
 
 [...nome].forEach((letra, i) => {
-
     const span = document.createElement("span");
-
     span.textContent = letra === " " ? "\u00A0" : letra;
-
     span.style.animationDelay = (i * 0.15) + "s";
-
     elementoNome.appendChild(span);
-
 });
 
-/* ABERTURA DOS PORTÕES */
+/* ABERTURA DOS PORTÕES E ENTRADA NA SALA REAL */
 
 function entrar() {
-
     const castelo = document.getElementById("castelo");
 
     if (castelo.classList.contains("aberto")) return;
@@ -385,9 +314,8 @@ function entrar() {
     castelo.classList.add("aberto");
 
     setTimeout(() => {
-        window.location.href = "sobre.html";
+        window.location.href = "sala-real.html";
     }, 2700);
-
 }
 
 </script>
