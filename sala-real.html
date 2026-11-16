@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amanda Souza | Minha Sala Real</title>
+<title>Sala Real | Amanda Souza</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -15,247 +15,174 @@
     box-sizing: border-box;
 }
 
-:root {
-    --ouro: #ffd875;
-    --rosa: #ff8bc9;
-    --roxo: #8d35cf;
-}
-
 body {
     min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
     color: #fff;
-    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
     background:
-      radial-gradient(ellipse at 50% 20%, #7024a6 0%, transparent 45%),
-      linear-gradient(145deg, #10051f, #290b48 50%, #10051f);
+        radial-gradient(ellipse at top, #7925a5 0%, transparent 55%),
+        radial-gradient(ellipse at bottom, #390b61 0%, transparent 60%),
+        linear-gradient(135deg, #160522, #33094f, #10051c);
+    overflow-x: hidden;
 }
-
-/* LUZES MÁGICAS */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background:
-      radial-gradient(circle at 10% 20%, #ffca7040, transparent 18%),
-      radial-gradient(circle at 90% 35%, #e879ff30, transparent 20%),
-      radial-gradient(circle at 50% 90%, #ff4d9e20, transparent 25%);
-    animation: aura 6s ease-in-out infinite alternate;
-    z-index: 0;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+        radial-gradient(2px 2px at 70% 20%, #ffd76a, transparent),
+        radial-gradient(3px 3px at 40% 80%, #ff8ad8, transparent),
+        radial-gradient(2px 2px at 85% 65%, #fff, transparent);
+    background-size: 180px 180px;
+    opacity: .7;
+    animation: brilho 8s linear infinite;
 }
 
-@keyframes aura {
-    from { opacity: .4; }
-    to { opacity: 1; }
+@keyframes brilho {
+    from { transform: translateY(0); }
+    to { transform: translateY(-180px); }
 }
 
-.particulas {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.particula {
-    position: absolute;
-    color: #ffe9a6;
-    text-shadow: 0 0 12px #ffd76a;
-    animation: flutuar linear infinite;
-    opacity: 0;
-}
-
-@keyframes flutuar {
-    0% {
-        transform: translateY(105vh) rotate(0deg) scale(.5);
-        opacity: 0;
-    }
-    15% { opacity: .9; }
-    85% { opacity: .8; }
-    100% {
-        transform: translateY(-15vh) rotate(360deg) scale(1.4);
-        opacity: 0;
-    }
-}
-
-/* SALÃO */
-
-.sala {
-    position: relative;
-    z-index: 2;
-    width: min(1100px, 94%);
-    margin: auto;
-    padding: 35px 0 55px;
+header {
     text-align: center;
-}
-
-.topo {
-    margin-bottom: 30px;
+    padding: 65px 20px 30px;
+    position: relative;
 }
 
 .coroa {
-    font-size: 55px;
-    display: inline-block;
-    filter: drop-shadow(0 0 15px gold);
-    animation: coroa 3s ease-in-out infinite;
+    font-size: 48px;
+    filter: drop-shadow(0 0 18px #ffd45c);
+    animation: flutuar 3s ease-in-out infinite;
 }
 
-@keyframes coroa {
-    50% {
-        transform: translateY(-12px) rotate(5deg);
-        filter: drop-shadow(0 0 28px #ffe17b);
-    }
-}
-
-.etiqueta {
-    color: #ffb6e7;
-    letter-spacing: 5px;
-    font-size: 11px;
-    margin: 12px 0;
-    text-transform: uppercase;
+@keyframes flutuar {
+    50% { transform: translateY(-12px); }
 }
 
 h1 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(35px, 7vw, 68px);
-    color: var(--ouro);
-    text-shadow:
-      0 0 8px #fff0b0,
-      0 0 22px #ffb52e,
-      0 0 45px #d34bff;
-    letter-spacing: 4px;
+    font-size: clamp(30px, 6vw, 65px);
+    color: #ffe49a;
+    text-shadow: 0 0 12px #ffbd39, 0 0 30px #d65aff;
+    margin: 15px 0;
+}
+
+.subtitulo {
+    color: #ffd7f4;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .linha {
     width: 180px;
     height: 3px;
-    margin: 18px auto;
-    background: linear-gradient(90deg, transparent, gold, #fff2b2, gold, transparent);
-    box-shadow: 0 0 15px gold;
+    margin: 25px auto;
+    background: linear-gradient(90deg, transparent, #ffe18b, #ff73d1, #ffe18b, transparent);
+    box-shadow: 0 0 15px #ffcf63;
 }
 
-.subtitulo {
-    color: #f8d7ff;
-    font-size: 14px;
-    letter-spacing: 2px;
-}
-
-/* DECORAÇÃO DO SALÃO */
-
-.decoracao {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    max-width: 850px;
-    font-size: 32px;
-    text-shadow: 0 0 18px #ff315f;
-}
-
-.decoracao span {
-    animation: rosa 4s ease-in-out infinite;
-}
-
-.decoracao span:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.decoracao span:nth-child(3) {
-    animation-delay: 2s;
-}
-
-@keyframes rosa {
-    50% {
-        transform: translateY(-10px) scale(1.15);
-        filter: drop-shadow(0 0 15px #ff4f87);
-    }
-}
-
-/* CARTA REAL */
-
-.carta {
-    max-width: 820px;
-    margin: 10px auto 30px;
-    padding: 38px;
-    border: 1px solid #e8bd67;
-    border-radius: 22px;
-    background:
-      linear-gradient(135deg, #351052eF, #160922f2);
-    box-shadow:
-      0 0 18px #d79a43a0,
-      0 0 55px #a13cff55,
-      inset 0 0 30px #f6c65c15;
+main {
+    width: min(1050px, 90%);
+    margin: 0 auto;
     position: relative;
-    text-align: left;
 }
 
-.carta::before {
-    content: "✧";
-    position: absolute;
-    top: 12px;
-    left: 20px;
-    font-size: 25px;
-    color: var(--ouro);
-    text-shadow: 0 0 15px gold;
+.painel {
+    background: linear-gradient(145deg, rgba(91, 28, 125, .88), rgba(30, 8, 48, .94));
+    border: 1px solid rgba(255, 220, 133, .75);
+    border-radius: 25px;
+    padding: 35px;
+    margin: 28px 0;
+    box-shadow: 0 0 25px rgba(211, 102, 255, .35),
+                inset 0 0 25px rgba(255, 220, 133, .08);
+    animation: aparecer 1s ease both;
 }
 
-.carta::after {
-    content: "✧";
-    position: absolute;
-    bottom: 12px;
-    right: 20px;
-    font-size: 25px;
-    color: var(--rosa);
-    text-shadow: 0 0 15px pink;
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.saudacao {
+h2 {
     font-family: 'Cinzel', serif;
-    color: #ffe39a;
-    font-size: 22px;
+    color: #ffe49a;
+    font-size: 25px;
     margin-bottom: 20px;
+    text-shadow: 0 0 12px #d88cff;
 }
 
-.carta p {
-    color: #f7eafa;
+.painel > p {
     line-height: 1.9;
-    font-size: 14px;
-    margin-bottom: 15px;
+    color: #f9eafa;
+    font-size: 15px;
+    margin-bottom: 12px;
 }
 
-.carta strong {
-    color: #ffd77b;
+.destaque {
+    color: #ffd47b;
     font-weight: 600;
 }
 
-/* TRONO */
-
-.trono {
-    margin: 35px auto 20px;
-    font-size: 65px;
-    display: inline-block;
-    filter: drop-shadow(0 0 20px gold);
-    animation: trono 3s ease-in-out infinite;
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 22px;
 }
 
-@keyframes trono {
-    50% {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 35px #ffca52);
-    }
+.item {
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 211, 119, .4);
+    transition: .3s;
 }
 
-.frase {
+.item:hover {
+    transform: translateY(-7px);
+    background: rgba(174, 75, 220, .25);
+    box-shadow: 0 0 22px rgba(255, 198, 92, .3);
+}
+
+.item .icone {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.item h3 {
+    color: #ffdb91;
     font-family: 'Cinzel', serif;
-    color: #ffe3a0;
     font-size: 17px;
-    text-shadow: 0 0 12px #e7a5ff;
-    margin: 12px 0 30px;
+    margin-bottom: 10px;
 }
 
-/* NAVEGAÇÃO */
+.item p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #f9eafa;
+}
+
+.rosa {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 12px;
+    margin: 15px 0;
+    filter: drop-shadow(0 0 10px #ff397d);
+}
+
+footer {
+    text-align: center;
+    padding: 35px 15px 55px;
+}
+
+footer p {
+    color: #f5c5ff;
+    font-size: 13px;
+}
 
 .navegacao {
     display: flex;
@@ -267,153 +194,158 @@ h1 {
 
 .botao {
     display: inline-block;
+    padding: 13px 24px;
+    border-radius: 30px;
     text-decoration: none;
-    padding: 14px 24px;
-    border-radius: 35px;
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
+    color: #2b1039;
     font-weight: 700;
-    letter-spacing: 1px;
+    background: linear-gradient(135deg, #fff0b7, #e9a7ff, #ffb7d9);
+    box-shadow: 0 0 18px rgba(255, 205, 113, .5);
     transition: .3s;
 }
 
-.voltar {
-    color: #ffe5a2;
-    border: 1px solid #d6a84d;
-    background: #35134d;
-}
-
-.proximo {
-    color: #371044;
-    background: linear-gradient(90deg, #eab84d, #fff0b0, #dca33b);
-    box-shadow: 0 0 20px #ffd36b;
-}
-
 .botao:hover {
-    transform: translateY(-5px) scale(1.04);
-    box-shadow: 0 0 30px #ffdc83;
+    transform: scale(1.06);
+    box-shadow: 0 0 28px #ffd36c;
 }
 
-.rodape {
-    margin-top: 38px;
-    color: #dcb6ee;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-@media(max-width: 600px) {
-    .sala { width: 92%; padding-top: 25px; }
-    .carta { padding: 32px 23px; }
-    .carta p { font-size: 13px; }
-    .etiqueta { letter-spacing: 2px; }
-    .decoracao { font-size: 25px; }
+@media (max-width: 600px) {
+    .painel { padding: 23px; }
+    .subtitulo { letter-spacing: 1px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="particulas" id="particulas"></div>
+<header>
+    <div class="coroa">👑</div>
+    <h1>MINHA SALA REAL</h1>
+    <div class="subtitulo">Conheça a pessoa por trás da tecnologia</div>
+    <div class="linha"></div>
+    <div class="rosa">🌹 ✨ 🌹</div>
+</header>
 
-<main class="sala">
+<main>
 
-    <header class="topo">
-        <div class="coroa">👑</div>
-        <p class="etiqueta">O Castelo Mágico de Amanda Souza</p>
-
-        <h1>MINHA SALA REAL</h1>
-
-        <div class="linha"></div>
-
-        <p class="subtitulo">
-            ONDE MINHA HISTÓRIA ENCONTRA O UNIVERSO DA TECNOLOGIA
-        </p>
-    </header>
-
-    <div class="decoracao">
-        <span>🌹</span>
-        <span>✨</span>
-        <span>🌹</span>
-        <span>💎</span>
-        <span>🌹</span>
-    </div>
-
-    <section class="carta">
-
-        <h2 class="saudacao">Olá! Seja muito bem-vindo(a)! ✨</h2>
+    <section class="painel">
+        <h2>✨ Seja bem-vindo ao meu reino!</h2>
 
         <p>
-            Sou <strong>Amanda Souza</strong>, estudante de
-            <strong>Análise e Desenvolvimento de Sistemas</strong>
-            e estou construindo minha trajetória no universo da tecnologia.
+            Meu nome é <span class="destaque">Amanda Souza</span>.
+            Sou estudante de <span class="destaque">Análise e Desenvolvimento de Sistemas</span>
+            e estou construindo minha jornada no universo da tecnologia.
         </p>
 
         <p>
-            Minha jornada profissional começou cedo, por meio do
-            <strong>atendimento ao público</strong>, experiência que me
-            ensinou a ouvir, compreender necessidades, resolver problemas
-            e lidar com diferentes pessoas.
+            Acredito que aprender é abrir portas para novas possibilidades.
+            Minha trajetória profissional começou no atendimento ao público,
+            onde desenvolvi comunicação, paciência, responsabilidade e habilidade
+            para compreender e solucionar necessidades.
         </p>
 
         <p>
-            Hoje, levo essas experiências para minha formação em tecnologia.
-            Tenho buscado aprender, desenvolver projetos e explorar
-            possibilidades em <strong>desenvolvimento de sistemas,
-            inteligência artificial, automação e outras áreas de TI.</strong>
+            Hoje, quero transformar essa experiência em uma nova etapa:
+            conquistar minha primeira oportunidade de estágio em TI,
+            aprender com profissionais da área e contribuir com dedicação,
+            curiosidade e vontade de crescer.
         </p>
-
-        <p>
-            Estou em busca da minha <strong>primeira oportunidade de estágio
-            em tecnologia</strong>, com muita dedicação, curiosidade e
-            vontade de transformar conhecimento em soluções.
-        </p>
-
-        <p>
-            Este é um pouco do meu mundo. Será um prazer compartilhar
-            minha jornada com você!
-        </p>
-
     </section>
 
-    <div class="trono">👑</div>
+    <section class="painel">
+        <h2>💜 Minha trajetória</h2>
 
-    <p class="frase">
-        "Toda grande jornada começa com a coragem de abrir uma porta."
-    </p>
+        <div class="grade">
 
-    <nav class="navegacao">
-        <a class="botao voltar" href="index.html">
-            ⟵ VOLTAR À ENTRADA
-        </a>
+            <div class="item">
+                <div class="icone">🎓</div>
+                <h3>Formação</h3>
+                <p>
+                    Tecnólogo em Análise e Desenvolvimento de Sistemas.
+                    Graduação em andamento, com previsão de conclusão em 2027.
+                </p>
+            </div>
 
-        <a class="botao proximo" href="grimorio.html">
-            PRÓXIMA SALA ✨
-        </a>
-    </nav>
+            <div class="item">
+                <div class="icone">🛍️</div>
+                <h3>Atendimento ao cliente</h3>
+                <p>
+                    Experiência na Sorveteria Primus, com atendimento ao público
+                    e atenção às necessidades dos clientes.
+                </p>
+            </div>
 
-    <footer class="rodape">
-        AMANDA SOUZA • MEU CASTELO, MINHA HISTÓRIA
-    </footer>
+            <div class="item">
+                <div class="icone">📦</div>
+                <h3>Experiência com entregas</h3>
+                <p>
+                    Atuação como Shopper na Rappi, realizando compras,
+                    contato por telefone e acompanhamento de pedidos.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="painel">
+        <h2>🌟 O que levo comigo</h2>
+
+        <div class="grade">
+
+            <div class="item">
+                <div class="icone">💬</div>
+                <h3>Comunicação</h3>
+                <p>Escuta ativa, boa comunicação e atenção às pessoas.</p>
+            </div>
+
+            <div class="item">
+                <div class="icone">🧩</div>
+                <h3>Resolução de problemas</h3>
+                <p>Calma, raciocínio e iniciativa para buscar soluções.</p>
+            </div>
+
+            <div class="item">
+                <div class="icone">📚</div>
+                <h3>Aprendizado contínuo</h3>
+                <p>Curiosidade, dedicação e disposição para aprender coisas novas.</p>
+            </div>
+
+            <div class="item">
+                <div class="icone">🤝</div>
+                <h3>Comprometimento</h3>
+                <p>Responsabilidade, colaboração e vontade de fazer bem feito.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="painel">
+        <h2>🚀 Meu próximo capítulo</h2>
+
+        <p>
+            Estou em busca de uma oportunidade de estágio em
+            <span class="destaque">qualquer área da Tecnologia da Informação</span>.
+            Quero ampliar meus conhecimentos, participar de projetos reais
+            e desenvolver minhas habilidades em um ambiente profissional.
+        </p>
+
+        <div class="rosa">🌹 💎 🌹</div>
+
+        <p style="text-align:center">
+            Cada conhecimento adquirido é uma nova joia nesta jornada.
+        </p>
+    </section>
 
 </main>
 
-<script>
-const area = document.getElementById("particulas");
-const simbolos = ["✦", "✧", "✨", "⋆", "💫"];
+<footer>
+    <p>Este reino está apenas começando... ✨</p>
 
-for (let i = 0; i < 35; i++) {
-    const brilho = document.createElement("span");
-    brilho.className = "particula";
-    brilho.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
-
-    brilho.style.left = Math.random() * 100 + "%";
-    brilho.style.animationDuration = (7 + Math.random() * 12) + "s";
-    brilho.style.animationDelay = (Math.random() * 12) + "s";
-    brilho.style.fontSize = (10 + Math.random() * 18) + "px";
-
-    area.appendChild(brilho);
-}
-</script>
+    <div class="navegacao">
+        <a class="botao" href="index.html">🏰 Voltar à entrada</a>
+        <a class="botao" href="grimorio.html">📖 Próxima sala</a>
+    </div>
+</footer>
 
 </body>
 </html>
