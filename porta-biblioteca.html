@@ -1,1 +1,265 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Mágico | Biblioteca</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    color: white;
+    background:
+        radial-gradient(ellipse at center, #35104e 0%, #160824 48%, #05020d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cena {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    overflow: hidden;
+}
+
+h1 {
+    color: #ffd5ff;
+    font-size: clamp(25px, 5vw, 48px);
+    text-shadow: 0 0 12px #ff65e8, 0 0 30px #b64dff;
+    margin-bottom: 35px;
+    animation: surgir 2s ease both;
+}
+
+.luzes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.luz {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe7ff;
+    box-shadow: 0 0 12px 4px #d45bff;
+    animation: flutuar 4s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+    from { transform: translateY(20px); opacity: .2; }
+    to { transform: translateY(-45px); opacity: 1; }
+}
+
+.livros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 35px);
+    perspective: 900px;
+    margin-bottom: 38px;
+}
+
+.livro {
+    width: clamp(65px, 15vw, 115px);
+    height: clamp(90px, 20vw, 150px);
+    position: relative;
+    opacity: 0;
+    transform: translateY(100px) rotateY(-35deg);
+    animation: livroChega 1.5s ease forwards;
+}
+
+.livro:nth-child(2) { animation-delay: 2s; }
+.livro:nth-child(3) { animation-delay: 4s; }
+
+@keyframes livroChega {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0);
+    }
+}
+
+.capa {
+    position: absolute;
+    inset: 0;
+    border: 3px solid #ffd5ff;
+    border-radius: 5px 10px 10px 5px;
+    background: linear-gradient(135deg, #ff4fbd, #7414a8 70%, #260b49);
+    box-shadow: 0 0 18px #d94dff, inset 0 0 15px #ffb6ef;
+    transform-origin: left;
+    animation: abrir 2s ease-in-out forwards;
+    animation-delay: 6s;
+}
+
+.livro:nth-child(2) .capa { animation-delay: 7s; }
+.livro:nth-child(3) .capa { animation-delay: 8s; }
+
+.capa::before {
+    content: "✦";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: #fff2ff;
+    text-shadow: 0 0 15px white;
+}
+
+@keyframes abrir {
+    to { transform: rotateY(-125deg); }
+}
+
+.pagina {
+    position: absolute;
+    inset: 3px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #fff0ff, #e8baff);
+    box-shadow: 0 0 25px #ff9af1;
+}
+
+.frase {
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: clamp(19px, 4vw, 34px);
+    letter-spacing: 2px;
+    color: #fff0ff;
+    text-shadow: 0 0 12px #ff5de1, 0 0 25px #a64dff;
+}
+
+.linha {
+    opacity: 0;
+    animation: cair 1.2s ease forwards;
+}
+
+.linha:nth-child(1) { animation-delay: 9s; }
+.linha:nth-child(2) { animation-delay: 10.5s; }
+.linha:nth-child(3) { animation-delay: 12s; }
+.linha:nth-child(4) { animation-delay: 13.5s; }
+
+@keyframes cair {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.botao {
+    margin-top: 25px;
+    padding: 15px 30px;
+    border: 2px solid #ffd5ff;
+    border-radius: 40px;
+    color: white;
+    background: linear-gradient(90deg, #c52cae, #7626c8);
+    box-shadow: 0 0 18px #ed65ff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    opacity: 0;
+    animation: surgir 1.5s ease forwards;
+    animation-delay: 15.5s;
+    transition: .3s;
+}
+
+.botao:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #ff8af2;
+}
+
+@keyframes surgir {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-delay: 0ms !important;
+    }
+
+    .livro, .linha, .botao {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+<main class="cena">
+
+    <div class="luzes" id="luzes"></div>
+
+    <h1>✨ O PORTAL DO CONHECIMENTO ✨</h1>
+
+    <div class="livros">
+        <div class="livro">
+            <div class="pagina"></div>
+            <div class="capa"></div>
+        </div>
+
+        <div class="livro">
+            <div class="pagina"></div>
+            <div class="capa"></div>
+        </div>
+
+        <div class="livro">
+            <div class="pagina"></div>
+            <div class="capa"></div>
+        </div>
+    </div>
+
+    <div class="frase">
+        <div class="linha">O CONHECIMENTO</div>
+        <div class="linha">É A MAGIA</div>
+        <div class="linha">QUE TRANSFORMA</div>
+        <div class="linha">SONHOS EM POSSIBILIDADES</div>
+    </div>
+
+    <a class="botao" href="biblioteca.html">
+        ENTRAR NA BIBLIOTECA ✨
+    </a>
+
+</main>
+
+<script>
+const luzes = document.getElementById("luzes");
+
+for (let i = 0; i < 45; i++) {
+    const luz = document.createElement("span");
+    luz.className = "luz";
+    luz.style.left = Math.random() * 100 + "%";
+    luz.style.top = Math.random() * 100 + "%";
+    luz.style.animationDelay = Math.random() * 4 + "s";
+    luzes.appendChild(luz);
+}
+</script>
+
+</body>
+</html>
